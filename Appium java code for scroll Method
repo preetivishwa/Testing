@@ -1,0 +1,28 @@
+
+List<WebElement> Lists1 = driver.findElements(By.className("android.widget.TextView"));
+	
+		scroll_to_txt(driver,By.className("android.widget.TextView"), "text","2010");
+		WebElement Selected_Year = driver.findElement(By.xpath("//android.widget.TextView[@text='2010']"));
+		Selected_Year.click();
+		public void scroll(AndroidDriver driver, double start_xd, double start_yd, double end_xd, double end_yd) throws InterruptedException {
+		Dimension dimension= driver.manage().window().getSize();
+		int start_x =(int) (dimension.width * start_xd);
+		int start_y =(int) (dimension.height * start_yd);		
+		int end_x =(int) (dimension.width * end_xd);
+		int end_y =(int) (dimension.height * end_yd);		
+		TouchAction touch = new TouchAction(driver);
+
+		touch.press(PointOption.point(start_x, start_y))
+			.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+			.moveTo(PointOption.point(end_x, end_y)).release().perform();		
+      }
+      
+      
+      OR
+      
+      
+      //Swipe action UP and down
+      		WebElement element = (WebElement) driver.findElement(MobileBy.AndroidUIAutomator(
+		        "new UiScrollable(new UiSelector().scrollable(true)).setMaxSearchSwipes(1)" +
+		         ".scrollIntoView(new UiSelector().text(\"exact_text\"))"));
+		
