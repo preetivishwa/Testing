@@ -1,0 +1,18 @@
+
+	// Created scroll method
+	public void scroll(AndroidDriver driver, double start_xd, double start_yd, double end_xd, double end_yd) throws InterruptedException {
+		Dimension dimension= driver.manage().window().getSize();
+		int start_x =(int) (dimension.width * start_xd);
+		int start_y =(int) (dimension.height * start_yd);		
+		int end_x =(int) (dimension.width * end_xd);
+		int end_y =(int) (dimension.height * end_yd);		
+		TouchAction touch = new TouchAction(driver);
+    
+		touch.press(PointOption.point(start_x, start_y))
+			.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+			.moveTo(PointOption.point(end_x, end_y)).release().perform();				
+		
+	} 
+  
+  //Calling scroll method
+  scroll(driver, 0.5, 0.7, 0.5, 0.2);
